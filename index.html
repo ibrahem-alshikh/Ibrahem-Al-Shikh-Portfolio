@@ -6,7 +6,7 @@
     <title>Ibrahem Al-Shikh | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
@@ -50,8 +50,21 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: "Saira", sans-serif;
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Fonts: Inter for readable body text, Saira for the name, headings and UI labels */
+        body {
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+
+        h1, h2,
+        .logo-area p,
+        .card-title,
+        .card-subtitle,
+        .skill-category strong,
+        .rail-label {
+            font-family: "Saira", sans-serif;
         }
 
         body {
@@ -76,7 +89,7 @@
             pointer-events: none;
         }
 
-        #stars {
+        #bg-stars-1 {
             width: 1px;
             height: 1px;
             background: transparent;
@@ -85,7 +98,7 @@
             animation: animStar 50s linear infinite;
         }
 
-        #stars:after {
+        #bg-stars-1:after {
             content: " ";
             position: absolute;
             top: 2000px;
@@ -329,6 +342,37 @@
         #stars { opacity: 0; }
         #toggle:checked + svg #stars { opacity: 1; }
 
+        /* Header actions: Download CV + theme toggle, grouped top-right */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-shrink: 0;
+        }
+        a.uiverse-btn.download-btn {
+            text-decoration: none;
+            white-space: nowrap;
+            color: #fff;
+            background: linear-gradient(135deg, #0284c7, #4f46e5);
+            border-color: transparent;
+            border-radius: 999px;
+            box-shadow: 0 6px 18px rgba(79, 70, 229, 0.35);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+        }
+        a.uiverse-btn.download-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+            box-shadow: 0 10px 24px rgba(79, 70, 229, 0.45);
+        }
+        a.uiverse-btn.download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(79, 70, 229, 0.35);
+        }
+        a.uiverse-btn.download-btn:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+
         /* Links Navigation Buttons */
         .links-container {
             display: flex;
@@ -494,7 +538,8 @@
         }
 
 
-        .copy-btn .copy-text { text-transform: none; }
+        .copy-btn { justify-content: center; }
+        .copy-btn .copy-text { text-transform: none; white-space: nowrap; }
         .copy-btn.copied { border-color: #34d399; box-shadow: 3px 3px #34d399; color: #34d399; }
         .x-icon { width: 1.3rem; height: 1.3rem; }
         .certs-card { display: flex; gap: 1.5rem; align-items: center; }
@@ -545,8 +590,9 @@
                 font-size: 0.85rem;
             }
 
-            #theme-toggle-button {
-                align-self: flex-end;
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
             }
 
             .card-header {
@@ -610,7 +656,7 @@
 <body>
 
 <div class="bg-stars-container">
-    <div id="stars"></div>
+    <div id="bg-stars-1"></div>
     <div id="stars2"></div>
     <div id="stars3"></div>
 </div>
@@ -655,10 +701,14 @@
         <header>
             <div class="logo-area">
                 <h1>Ibrahem Nezar Kasem Al-Shikh</h1>
-                <p>Information Technology Student & Networking Specialist</p>
-                <span class="location-tag">📍 Jeddah, Saudi Arabia &nbsp;|&nbsp; Nationality: Syrian</span>
+                <p>Information Technology Student | IT Support</p>
+                <span class="location-tag"> Jeddah, Saudi Arabia &nbsp;|&nbsp; Nationality: Syrian</span>
             </div>
             
+            <div class="header-actions">
+            <a class="uiverse-btn download-btn" href="Ibrahem_Al-Shikh_CV.pdf" download="Ibrahem_Al-Shikh_CV.pdf" aria-label="Download CV as PDF">
+                <i class="material-icons">download</i> Download CV
+            </a>
             <label id="theme-toggle-button">
               <input type="checkbox" id="toggle">
               <svg viewBox="0 0 69.667 44" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
@@ -706,6 +756,7 @@
                 </g>
               </svg>
             </label>
+            </div>
         </header>
 
         <div class="links-container">
@@ -717,23 +768,18 @@
                 <i class="material-icons">phone</i> <span class="copy-text">+966 50 064 1288</span>
             </button>
             
-            <a href="https://www.linkedin.com/in/ibrahem-al-shikh" target="_blank">
-                <button class="uiverse-btn"><i class="fa fa-linkedin-square"></i> LinkedIn</button>
-            </a>
+            <a class="uiverse-btn" href="https://www.linkedin.com/in/ibrahem-al-shikh" target="_blank" rel="noopener"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
             
-            <a href="https://github.com/ibrahem-alshikh" target="_blank" rel="noopener">
-                <button class="uiverse-btn"><i class="fa fa-github"></i> GitHub</button>
-            </a>
+            <a class="uiverse-btn" href="https://github.com/ibrahem-alshikh" target="_blank" rel="noopener"><i class="fa fa-github"></i> GitHub</a>
 
-            <a href="https://x.com/Ibrahem143dih" target="_blank" rel="noopener">
-                <button class="uiverse-btn"><svg class="x-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</button>
-            </a>
+            <a class="uiverse-btn" href="https://x.com/Ibrahem143dih" target="_blank" rel="noopener"><svg class="x-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X</a>
         </div>
 
         <section id="summary-sec">
             <h2>Professional Summary</h2>
             <p class="card">
-                Information Technology student (Networking Track) at King Abdulaziz University with a 4.71/5.00 GPA and 3+ years of hands-on IT support experience in helpdesk support, Windows deployment, and hardware and software troubleshooting. Completed a summer traineeship at WOW Digital Information Technology and Cisco Networking Academy training in networking, hardware, and operating systems. Seeking an IT Support position to deliver fast, reliable technical support to end users.            </p>
+                Information Technology student (Networking Track) at King Abdulaziz University with a 4.71/5.00 GPA and 3+ years of hands-on IT support experience in helpdesk support, Windows deployment, and hardware and software troubleshooting. Completed a summer traineeship at WOW Digital Information Technology and Cisco Networking Academy training in networking, hardware, and operating systems. Seeking an IT Support position to deliver fast, reliable technical support to end users.
+            </p>
         </section>
 
         <section id="education-sec">
@@ -819,7 +865,7 @@
         </section>
 
         <section id="projects-sec">
-            <h2>Featured Projects</h2>
+            <h2>Projects</h2>
             
             <div class="card">
                 <div class="card-header">
@@ -942,7 +988,7 @@
                 <div class="skill-category">
                     <strong> Networking</strong>
                     <div class="skill-tags">
-                        <span class="skill-tag">Cisco Networking Fundamentals (Cisco Certified)</span>
+                        <span class="skill-tag">Cisco Networking Academy</span>
                         <span class="skill-tag">Basic Network Configuration</span>
                         <span class="skill-tag">LAN/WAN Concepts</span>
                         <span class="skill-tag">Network Troubleshooting</span>
@@ -1069,11 +1115,19 @@
         const original = label.innerText;
         btn.addEventListener('click', () => {
             copyText(btn.dataset.copy).then(() => {
+                // Lock the button's current size so the layout never jumps
+                if (!btn.classList.contains('copied')) {
+                    btn.style.width = btn.offsetWidth + 'px';
+                    btn.style.height = btn.offsetHeight + 'px';
+                }
                 label.innerText = 'Copied!';
                 btn.classList.add('copied');
-                setTimeout(() => {
+                clearTimeout(btn._copyTimer);
+                btn._copyTimer = setTimeout(() => {
                     label.innerText = original;
                     btn.classList.remove('copied');
+                    btn.style.width = '';
+                    btn.style.height = '';
                 }, 1800);
             }).catch(err => console.error('Copy failed:', err));
         });
