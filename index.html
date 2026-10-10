@@ -348,16 +348,28 @@
             align-items: center;
             gap: 1.5rem;
             flex-shrink: 0;
+            flex-wrap: wrap;
         }
+        #theme-toggle-button { flex-shrink: 0; }
         a.uiverse-btn.download-btn {
             text-decoration: none;
             white-space: nowrap;
             color: #fff;
             background: linear-gradient(135deg, #0284c7, #4f46e5);
-            border-color: transparent;
+            border: 0;
+            padding: 15px 26px;
             border-radius: 999px;
             box-shadow: 0 6px 18px rgba(79, 70, 229, 0.35);
             transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+        }
+        /* Fixed-size icon slot: if the icon font is slow or blocked, the button doesn't blow up */
+        a.uiverse-btn.download-btn .material-icons {
+            display: inline-block;
+            width: 1.4rem;
+            height: 1.4rem;
+            line-height: 1.4rem;
+            overflow: hidden;
+            white-space: nowrap;
         }
         a.uiverse-btn.download-btn:hover {
             transform: translateY(-2px);
@@ -554,6 +566,31 @@
             display: none;
         }
 
+        /* Desktop: sidebar pinned to the left edge of the window, content centred */
+        @media (min-width: 851px) {
+            .page-layout {
+                display: block;
+                max-width: none;
+            }
+            aside {
+                position: fixed;
+                left: 0;
+                top: 0;
+                z-index: 20;
+            }
+            .main-content {
+                width: min(1150px, 100% - 400px);
+                margin: 0 auto;
+            }
+        }
+        /* Narrower desktop windows: keep room for the sidebar labels on the left */
+        @media (min-width: 851px) and (max-width: 1250px) {
+            .main-content {
+                width: auto;
+                margin: 0 1rem 0 200px;
+            }
+        }
+
         @media (max-width: 850px) {
             body {
                 padding: 0;
@@ -607,6 +644,11 @@
             .uiverse-btn {
                 font-size: 0.95rem;
                 padding: 10px 16px;
+            }
+
+            a.uiverse-btn.download-btn {
+                font-size: 0.9rem;
+                padding: 12px 18px;
             }
 
             /* Sticky mobile bottom nav bar */
@@ -700,7 +742,7 @@
     <main class="main-content">
         <header>
             <div class="logo-area">
-                <h1>Ibrahem Nezar Kasem Al-Shikh</h1>
+                <h1>Ibrahem Nezar Kasem <span style="white-space: nowrap;">Al-Shikh</span></h1>
                 <p>Information Technology Student | IT Support</p>
                 <span class="location-tag"> Jeddah, Saudi Arabia &nbsp;|&nbsp; Nationality: Syrian</span>
             </div>
@@ -824,13 +866,13 @@
                         <div class="card-title">IT Summer Trainee</div>
                         <div class="card-subtitle">WOW Digital Information Technology</div>
                     </div>
-                    <div class="date-location">Jun 2026 - Sep 2026<br>Jeddah, SA</div>
+                    <div class="date-location">Jun 2026 - Aug 2026<br>Jeddah, SA</div>
                 </div>
                 <ul>
-                    <li>Completed hands-on training in web development, mobile app development, system analysis, deployment, integrations, and technical support.</li>
-                    <li>Contributed to Esmaani project: developed promotional website, integrated Frappe Framework, built Flutter mobile app, implemented payment integration, and prepared beta release on Google Play Store.</li>
-                    <li>Assisted in initial development of WOW Revenue Hub (Frappe/ERPNext): requirements analysis, integration planning, task planning, and Project Ledger creation.</li>
-                    <li>Developed understanding of full SDLC from requirements to deployment and improvement.</li>
+                    <li>Gained hands-on exposure to remote infrastructure through a KVM-based monitoring and management setup for a virtual center at a medical complex in Jeddah.</li>
+                    <li>Learned the company's fingerprint access system: installation, server connectivity, user management, and notification support.</li>
+                    <li>Contributed to the Esmaani project: promotional website, Frappe Framework integration, Flutter mobile app, payment integration, and Google Play beta release.</li>
+                    <li>Assisted in the initial development of WOW Revenue Hub (Frappe/ERPNext): requirements analysis, integration planning, and Project Ledger management.</li>
                 </ul>
             </div>
 
